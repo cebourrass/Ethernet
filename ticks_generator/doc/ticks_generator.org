@@ -1,0 +1,27 @@
+#+TITLE: ticks_generator
+#+SETUPFILE: "../../../org/header.org"
+* Module /ticks_generator/
+** Description
+Ce module décrit le module de synchronisation.
+Lorsque plusieurs caméras participent au même traitement, ce module permet de rendre synchrone les horloges de chaque caméra.
+Une caméra, configurée en mode maître, émet régulièrement un signal desynchronisation.
+Les autres caméras, configurées en esclave, calent leur horloge locale sur l'ordre de synchronisation reçu. 
+** Code source
+*** Entité et architectures
+#+CAPTION:  [Code source]{Code source complet du module}
+#+LABEL: tab:201210261403
+#+INCLUDE: "../src/ticks_generator.vhd" src vhdl
+*** Configuration
+#+CAPTION:  [Code source]{Code source complet du module}
+#+LABEL: tab:201210261403
+#+INCLUDE: "../src/ticks_generator_conf.vhd" src vhdl
+*** Composant
+#+CAPTION:  [Code source]{Code source complet du module}
+#+LABEL: tab:201210261403
+#+INCLUDE: "../src/ticks_generator_comp.vhd" src vhdl
+*** Package
+#+CAPTION:  [Code source]{Code source complet du module}
+#+LABEL: tab:201210261403
+#+INCLUDE: "../src/ticks_generator_pack.vhd" src vhdl
+*** Sous modules
+**** Counter [[../../../counter/vhdl/doc/counter.html]]

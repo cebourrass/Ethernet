@@ -1,0 +1,4 @@
+#+TITLE: reset_generator.vhd
+#+SETUPFILE: "../../../org/header.org"
+*** Code source 
+#+INCLUDE: "../src/reset_generator.vhd" src vhdl

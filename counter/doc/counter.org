@@ -1,0 +1,38 @@
+#+TITLE: Counter.vhd
+#+SETUPFILE: "../../../org/header.org"
+* Module /counter.vhd/
+** Entité /counter/
+Ce module décrit un compteur décompteur synchrone avec possiblité de préchargement et validation de comptage.
+*** Généricité
+**** Libraries de configuration
+Ce module ne référence aucune librairie de configuration externe.
+**** Généricité de l'entité
+#+CAPTION:  [Généricité]{Liste des génériques déclarés dans l'entité}
+#+LABEL: tab:201210261224
+|--------------+---------+---------------|
+| Generic      | Type    | Default value |
+|--------------+---------+---------------|
+| COUNTER_SIZE | integer |             8 |
+|--------------+---------+---------------|
+*** Ports
+#+CAPTION:  [Ports]{Liste des ports déclarés dans l'entité}
+#+LABEL: tab:201210261225
+|-----------------+--------------------------------------------+-----------|
+| Port            | Type                                       | Direction |
+|-----------------+--------------------------------------------+-----------|
+| clk_i           | std_logic                                  | in        |
+| rst_i           | std_logic                                  | in        |
+| data_to_load    | std_logic_vector (COUNTER_SIZE-1 downto 0) | in        |
+| count_enable_i  | std_logic                                  | in        |
+| load_enable_i   | std_logic                                  | in        |
+| up_down_i       | std_logic                                  | in        |
+| counter_value_o | std_logic_vector (COUNTER_SIZE-1 downto 0  | out       |
+| zero_flag_o     | std_logic                                  | out       |
+|-----------------+--------------------------------------------+-----------|
+** Architectures
+*** Architecture /counter_arc/
+** Code source
+#+CAPTION:  [Code source]{Code source complet du module}
+#+LABEL: tab:201210261326
+#+INCLUDE: "../src/counter.vhd" src vhdl
+

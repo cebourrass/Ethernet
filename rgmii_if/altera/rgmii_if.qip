@@ -1,0 +1,3 @@
+set_global_assignment -name IP_TOOL_NAME "rgmii_if"
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/rgmii_if_pack.vhd"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/rgmii_if.vhd"]

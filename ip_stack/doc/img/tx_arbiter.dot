@@ -1,0 +1,105 @@
+digraph tx_arbiter {
+# State nodes
+  node [shape=ellipse];
+  IDLE_0;
+  WAIT_0;
+  ACK_0;
+  PROCESS_0;
+  IDLE_1;
+  WAIT_1;
+  ACK_1;
+  PROCESS_1;
+  IDLE_2;
+  WAIT_2;
+  ACK_2;
+  PROCESS_2;
+  IDLE;
+  ACCEPT_0;
+  ACCEPT_1;
+  ACCEPT_2;
+# Outputs
+  node [shape=none];
+  IDLE_OUT_0 [label="acknowledge_0=0\lpending_0=0\lrequest_memorized_0=0\l"];
+  WAIT_OUT_0 [label="acknowledge_0=0\lpending_0=0\lrequest_memorized_0=1\l"];
+  ACK_OUT_0 [label="acknowledge_0=1\lpending_0=1\lrequest_memorized_0=x\l"];
+  PROCESS_OUT_0 [label="acknowledge_0=0\lpending_0=1\lrequest_memorized_0=x\l"];
+  IDLE_OUT_1 [label="acknowledge_1=0\lpending_1=0\lrequest_memorized_1=0\l"];
+  WAIT_OUT_1 [label="acknowledge_1=0\lpending_1=0\lrequest_memorized_1=1\l"];
+  ACK_OUT_1 [label="acknowledge_1=1\lpending_1=1\lrequest_memorized_1=x\l"];
+  PROCESS_OUT_1 [label="acknowledge_1=0\lpending_1=1\lrequest_memorized_1=x\l"];
+  IDLE_OUT_2 [label="acknowledge_2=0\lpending_2=0\lrequest_memorized_2=0\l"];
+  WAIT_OUT_2 [label="acknowledge_2=0\lpending_2=0\lrequest_memorized_2=1\l"];
+  ACK_OUT_2 [label="acknowledge_2=1\lpending_2=1\lrequest_memorized_2=x\l"];
+  PROCESS_OUT_2 [label="acknowledge_2=0\lpending_2=1\lrequest_memorized_2=x\l"];
+  IDLE_OUT [label="accepted_0=0\laccepted_1=0\laccepted_2=0"];
+  ACCEPT_OUT_0 [label="accepted_0=1"];
+  ACCEPT_OUT_1 [label="accepted_1=1"];
+  ACCEPT_OUT_2 [label="accepted_2=1"];  
+# Disposition
+  { rank = same; IDLE_0; IDLE_OUT_0; };
+  { rank = same; WAIT_0; WAIT_OUT_0; };
+  { rank = same; ACK_0; ACK_OUT_0; };
+  { rank = same; PROCESS_0; PROCESS_OUT_0; };
+  { rank = same; IDLE_1; IDLE_OUT_1; };
+  { rank = same; WAIT_1; WAIT_OUT_1; };
+  { rank = same; ACK_1; ACK_OUT_1; };
+  { rank = same; PROCESS_1; PROCESS_OUT_1; };
+  { rank = same; IDLE_2; IDLE_OUT_2; };
+  { rank = same; WAIT_2; WAIT_OUT_2; };
+  { rank = same; ACK_2; ACK_OUT_2; };
+  { rank = same; PROCESS_2; PROCESS_OUT_2; };
+  { rank = same; IDLE; IDLE_OUT; };  
+  { rank = same; ACCEPT_0; ACCEPT_OUT_0; };  
+  { rank = same; ACCEPT_1; ACCEPT_OUT_1; };  
+  { rank = same; ACCEPT_2; ACCEPT_OUT_2; };  
+subgraph Channel_0 {  
+# Outputs
+  IDLE_0 -> IDLE_OUT_0 [arrowhead=none];
+  WAIT_0 -> WAIT_OUT_0 [arrowhead=none];
+  ACK_0 -> ACK_OUT_0 [arrowhead=none];
+  PROCESS_0 -> PROCESS_OUT_0 [arrowhead=none];
+# Graph
+  IDLE_0 -> WAIT_0 [label="request_0"];
+  WAIT_0 -> ACK_0 [label="accepted_0"];
+  ACK_0 -> PROCESS_0 [label="1"];
+  PROCESS_0 -> IDLE_0 [label="release_0"];  
+}
+subgraph Channel_1 {  
+# Outputs
+  IDLE_1 -> IDLE_OUT_1 [arrowhead=none];
+  WAIT_1 -> WAIT_OUT_1 [arrowhead=none];
+  ACK_1 -> ACK_OUT_1 [arrowhead=none];
+  PROCESS_1 -> PROCESS_OUT_1 [arrowhead=none];
+# Graph
+  IDLE_1 -> WAIT_1 [label="request_1"];
+  WAIT_1 -> ACK_1 [label="accepted_1"];
+  ACK_1 -> PROCESS_1 [label="1"];
+  PROCESS_1 -> IDLE_1 [label="release_1"];  
+}
+subgraph Channel_2 {  
+# Outputs
+  IDLE_2 -> IDLE_OUT_2 [arrowhead=none];
+  WAIT_2 -> WAIT_OUT_2 [arrowhead=none];
+  ACK_2 -> ACK_OUT_2 [arrowhead=none];
+  PROCESS_2 -> PROCESS_OUT_2 [arrowhead=none];
+# Graph
+  IDLE_2 -> WAIT_2 [label="request_2"];
+  WAIT_2 -> ACK_2 [label="accepted_2"];
+  ACK_2 -> PROCESS_2 [label="1"];
+  PROCESS_2 -> IDLE_2 [label="release_2"];  
+}
+subgraph Priority_encoder_fixed {  
+# Outputs
+  IDLE -> IDLE_OUT [arrowhead=none];
+  ACCEPT_0 -> ACCEPT_OUT_0 [arrowhead=none];
+  ACCEPT_1 -> ACCEPT_OUT_1 [arrowhead=none];
+  ACCEPT_2 -> ACCEPT_OUT_2 [arrowhead=none];
+# Graph
+  IDLE -> ACCEPT_0 [label="request_memorized_0 and\l not (pending_1 or pending_2)"];
+  IDLE -> ACCEPT_1 [label="request_memorized_1 and\l not (pending_0 or pending_2) and\l not request_memorized_0"];
+  IDLE -> ACCEPT_2 [label="request_memorized_2 and\l not (pending_0 or pending_1) and\l not (request_memorized_0 or request_memorized_1"];
+  ACCEPT_0 -> IDLE [label="release_0"];
+  ACCEPT_1 -> IDLE [label="release_1"];
+  ACCEPT_2 -> IDLE [label="release_2"];
+}
+}

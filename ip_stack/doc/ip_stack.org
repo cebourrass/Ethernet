@@ -1,0 +1,18 @@
+#+TITLE: mac_if.vhd
+#+SETUPFILE: "../../../org/header.org"
+* Module /mac_if/
+** Ports
+** Configuration
+*** Génériques
+*** Paquets externes
+
+** Comportement
+
+
+** Architecture /mac_if_arc/
+
+** Code source
+#+INCLUDE: "../src/mac_if.vhd" src vhdl
+#+INCLUDE: "../src/mac_if_pack.vhd" src vhdl
+#+INCLUDE: "../src/mac_if_comp.vhd" src vhdl
+#+INCLUDE: "../src/mac_if_conf.vhd" src vhdl

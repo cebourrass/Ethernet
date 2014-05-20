@@ -1,0 +1,5 @@
+set_global_assignment -name IP_TOOL_NAME "counter"
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/counter_comp.vhd"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/counter_conf.vhd"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/counter.vhd"]
+

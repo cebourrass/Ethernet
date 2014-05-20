@@ -1,0 +1,2 @@
+set_global_assignment -name IP_TOOL_NAME "debug"
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/debug_pack.vhd"]

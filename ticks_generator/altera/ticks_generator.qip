@@ -1,0 +1,5 @@
+set_global_assignment -name IP_TOOL_NAME "ticks_generator"
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/ticks_generator_conf.vhd" ]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/ticks_generator_comp.vhd" ]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/ticks_generator_pack.vhd" ]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../src/vhdl/ticks_generator.vhd" ]

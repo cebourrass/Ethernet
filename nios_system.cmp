@@ -1,0 +1,43 @@
+	component nios_system is
+		port (
+			clk_clk                                      : in  std_logic                     := 'X';             -- clk
+			reset_reset_n                                : in  std_logic                     := 'X';             -- reset_n
+			pio_0_external_connection_export             : out std_logic;                                        -- export
+			av_status_reg_0_conduit_end_udp_send         : out std_logic;                                        -- udp_send
+			av_status_reg_0_conduit_end_status_reg0_o    : out std_logic_vector(31 downto 0);                    -- status_reg0_o
+			av_status_reg_0_conduit_end_status_reg1_o    : out std_logic_vector(31 downto 0);                    -- status_reg1_o
+			av_status_reg_0_conduit_end_status_reg2_o    : out std_logic_vector(31 downto 0);                    -- status_reg2_o
+			av_status_reg_0_conduit_end_status_reg3_o    : out std_logic_vector(31 downto 0);                    -- status_reg3_o
+			av_status_reg_0_conduit_end_status_reg4_o    : out std_logic_vector(31 downto 0);                    -- status_reg4_o
+			av_status_reg_0_conduit_end_status_reg5_o    : out std_logic_vector(31 downto 0);                    -- status_reg5_o
+			av_status_reg_0_conduit_end_status_reg7_o    : out std_logic_vector(31 downto 0);                    -- status_reg7_o
+			av_status_reg_0_conduit_end_status_reg6_o    : out std_logic_vector(31 downto 0);                    -- status_reg6_o
+			av_eth_config_0_conduit_end_local_port_o     : out std_logic_vector(15 downto 0);                    -- local_port_o
+			av_eth_config_0_conduit_end_remote_port_o    : out std_logic_vector(15 downto 0);                    -- remote_port_o
+			av_eth_config_0_conduit_end_local_IP_o       : out std_logic_vector(31 downto 0);                    -- local_IP_o
+			av_eth_config_0_conduit_end_remote_IP_o      : out std_logic_vector(31 downto 0);                    -- remote_IP_o
+			av_eth_config_0_conduit_end_local_MAC_LSB_o  : out std_logic_vector(31 downto 0);                    -- local_MAC_LSB_o
+			av_eth_config_0_conduit_end_local_MAC_MSB_o  : out std_logic_vector(31 downto 0);                    -- local_MAC_MSB_o
+			av_eth_config_0_conduit_end_remote_MAC_LSB_o : out std_logic_vector(31 downto 0);                    -- remote_MAC_LSB_o
+			av_eth_config_0_conduit_end_checksum_o       : out std_logic_vector(15 downto 0);                    -- checksum_o
+			av_eth_config_0_conduit_end_remote_MAC_MSB_o : out std_logic_vector(31 downto 0);                    -- remote_MAC_MSB_o
+			av_config_reg_0_conduit_end_reg_0            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_0
+			av_config_reg_0_conduit_end_reg_1            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_1
+			av_config_reg_0_conduit_end_reg_2            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_2
+			av_config_reg_0_conduit_end_reg_3            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_3
+			av_config_reg_0_conduit_end_reg_4            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_4
+			av_config_reg_0_conduit_end_reg_5            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_5
+			av_config_reg_0_conduit_end_reg_6            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_6
+			av_config_reg_0_conduit_end_reg_7            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- reg_7
+			av_config_reg_0_conduit_end_udp_data_valid   : in  std_logic                     := 'X';             -- udp_data_valid
+			av_sendpacket_0_conduit_end_checksum_o       : out std_logic_vector(15 downto 0);                    -- checksum_o
+			av_sendpacket_0_conduit_end_local_port_o     : out std_logic_vector(15 downto 0);                    -- local_port_o
+			av_sendpacket_0_conduit_end_remote_port_o    : out std_logic_vector(15 downto 0);                    -- remote_port_o
+			av_sendpacket_0_conduit_end_remote_MAC_MSB_o : out std_logic_vector(31 downto 0);                    -- remote_MAC_MSB_o
+			av_sendpacket_0_conduit_end_remote_MAC_LSB_o : out std_logic_vector(31 downto 0);                    -- remote_MAC_LSB_o
+			av_sendpacket_0_conduit_end_udp_sendpacket   : out std_logic;                                        -- udp_sendpacket
+			av_sendpacket_0_conduit_end_length_o         : out std_logic_vector(15 downto 0);                    -- length_o
+			av_sendpacket_0_conduit_end_remote_IP_o      : out std_logic_vector(31 downto 0)                     -- remote_IP_o
+		);
+	end component nios_system;
+
